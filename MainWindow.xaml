@@ -18,34 +18,43 @@
 
             <RowDefinition Height="0.19*"/>
         </Grid.RowDefinitions>
-        
-        
+
+
 
         <StackPanel Grid.Column="0" Background="#FFFDFAF1">
             <TextBlock Text="Список дел" Margin="100,10,100,10" FontSize="26"></TextBlock>
-            
+
         </StackPanel>
 
-        
-        
-        <StackPanel Grid.Column="1" Background="#FFFDFAF1"> 
-            
+
+
+        <StackPanel Grid.Column="1" Background="#FFFDFAF1">
+            <CheckBox x:Name="checkbox1" IsChecked="True" Content="Добавления новых дел" Height="29" Margin="10,34,10,10"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Background="#FFFDFAF1">
             <ListBox Grid.Column="0" Grid.Row="1" Height="303" Width="380"
                      Background="#FDF5DF"/>
-            
+
 
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFFDFAF1">
+
             <ListBox Grid.Column="0" Grid.Row="1" Height="303" Width="380"
-                     Background="#FDF5DF"/>
+                     Background="#FDF5DF">
+                <TextBlock Text="Название:" FontSize="13" Height="16" />
+            </ListBox>
+            <TextBox FontSize="13" Height="22" Width="363" Margin="-1,-520,1,10"/>
+
+            <TextBlock Text="Выполнить до:" FontSize="13" Height="16" Margin="16,-465,10,10" />
+
+            <DatePicker IsDropDownOpen="True" Margin="15,-415,12,0" Height="24" />
+
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Background="#FFFDFAF1">
-                <ListBox Height="33" Width="100" Margin="10,18,10,10" 
+            <ListBox Height="33" Width="100" Margin="10,18,10,10" 
                      Background="#5EBEC4"/>
             <TextBlock Text="Удалить дела" FontSize="15" Margin="100,-45,100,10" Width="92" Height="20"/>
         </StackPanel>
