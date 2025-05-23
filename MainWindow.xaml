@@ -6,24 +6,22 @@
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#FFFDFAF1">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.18*"/>
-            <RowDefinition Height="1*"/>
-
-            <RowDefinition Height="0.19*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
-
-
-
-        <StackPanel Grid.Column="0" Background="#FFFDFAF1">
-            <TextBlock Text="Список дел" Margin="100,10,100,10" FontSize="26"></TextBlock>
-
+        <StackPanel Grid.Column="0" Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Список дел" FontSize="26"/>
         </StackPanel>
 
 
@@ -39,19 +37,22 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFFDFAF1">
+        <GroupBox Grid.Column="1" Grid.Row="1" Background="#FFFDFAF1">
 
-            <ListBox Grid.Column="0" Grid.Row="1" Height="303" Width="380"
-                     Background="#FDF5DF">
-                <TextBlock Text="Название:" FontSize="13" Height="16" />
-            </ListBox>
-            <TextBox FontSize="13" Height="22" Width="363" Margin="-1,-520,1,10"/>
 
-            <TextBlock Text="Выполнить до:" FontSize="13" Height="16" Margin="16,-465,10,10" />
+            <StackPanel>
+                <ListBox Grid.Column="0" Grid.Row="1" Height="303" Width="380"
+                        Background="#FDF5DF">
+                    <TextBlock Text="Название:" FontSize="13" Height="16" />
+                </ListBox>
+                <TextBox FontSize="13" Height="22" Width="363" Margin="-1,-520,1,10"/>
 
-            <DatePicker IsDropDownOpen="True" Margin="15,-415,12,0" Height="24" />
+                <TextBlock Text="Выполнить до:" FontSize="13" Height="16" Margin="16,-465,10,10" />
 
-        </StackPanel>
+                <DatePicker IsDropDownOpen="True" Margin="15,-415,12,0" Height="24" />      
+            </StackPanel>
+            
+        </GroupBox>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Background="#FFFDFAF1">
             <ListBox Height="33" Width="100" Margin="10,18,10,10" 
