@@ -30,35 +30,37 @@ namespace WpfApp2
 
         private void AddNewTaskCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            InputPanel.Visibility = Visibility.Visible; // Показываем панель ввода
+            InputPanel.Visibility = Visibility.Visible; // Показывает панель
         }
 
         private void AddNewTaskCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            InputPanel.Visibility = Visibility.Collapsed; // Скрываем панель ввода
+            InputPanel.Visibility = Visibility.Collapsed; // Скрывает панель
         }
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             string taskName = TaskTextBox.Text;
+            string taskName1 = TaskTextBoxe.Text;
             DateTime? taskDate = TaskDatePicker.SelectedDate;
 
-            if (!string.IsNullOrEmpty(taskName) && taskDate.HasValue)
+            if (!string.IsNullOrEmpty(taskName) && taskDate.HasValue && !string.IsNullOrEmpty(taskName1))
             {
-                TaskItem newTask = new TaskItem { Name = taskName, DueDate = taskDate.Value };
-                taskList.Add(newTask); // Добавляем задачу в список
+                TaskItem newTask = new TaskItem { Name = taskName, DueDate = taskDate.Value, Descriptions = taskName1};
+                taskList.Add(newTask); // Добавляет задачу в список
 
-                // Обновляем ListBox
-                TasksListBox.ItemsSource = null; // Очищаем источник данных
-                TasksListBox.ItemsSource = taskList; // Присваиваем новый источник
+                
+                TasksListBox.ItemsSource = null; // Очищения 
+                TasksListBox.ItemsSource = taskList;
 
-                // Очищаем поля ввода
-                TaskTextBox.Text= null; // Очищаем текстовое поле
-                TaskDatePicker.SelectedDate = null; // Очищаем дату
+                // Очищания поля
+                TaskTextBoxe.Text=null;
+                TaskTextBox.Text= null; 
+                TaskDatePicker.SelectedDate = null; 
             }
             else
             {
-                MessageBox.Show("Пожалуйста, введите название и выберите дату.");
+                MessageBox.Show("Пожалуйста, введите название, выберите дату и напишите коментарий");
             }
         }
 
@@ -67,17 +69,17 @@ namespace WpfApp2
             // Получаем выбранный элемент из списка задач
             var selectedTask = TasksListBox.SelectedItem as TaskItem;
 
-            // Проверяем, что задача выбрана
+           
             if (selectedTask != null)
             {
-                // Удаляем выбранную задачу из списка
+                
                 taskList.Remove(selectedTask);
 
-                // Обновляем отображение списка
+               
                 TasksListBox.ItemsSource = null; // Сбрасываем источник данных
                 TasksListBox.ItemsSource = taskList; // Присваиваем обновленный список 
 
-                MessageBox.Show("Задача успешно удалена.");
+                MessageBox.Show("Дело успешно удалена."); // в жопу эту залупу я спать
             }
             else
             {
@@ -91,11 +93,16 @@ namespace WpfApp2
     public class TaskItem
     {
         public string Name { get; set; }
+        public string Descriptions { get; set; }
         public DateTime DueDate { get; set; }
+
+        
 
         public override string ToString()
         {
-            return $"{Name} - срок: {DueDate.ToShortDateString()}";
+            return $"{Name} - срок: {DueDate.ToShortDateString()}, " +
+                $"\n- коментарий: {Descriptions}"; // вывод
+           
         }
     }
 }
